@@ -1,0 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    background:green;
+    height: calc(100vh - 30px - 10px);
+}
