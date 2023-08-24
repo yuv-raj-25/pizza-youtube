@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../CartContext'
 import { useContext } from 'react'
-
+import AddToCart from '../helpers/AddTocart'
 
 const Product = ({ product }) => {
   const [isAdding, setIsAdded] = useState(false);
@@ -10,21 +10,9 @@ const Product = ({ product }) => {
 
   const addToCart = (event, product) => {
     event.preventDefault();
-    let _cart = { ...cart }; // { items: {}}
-    if (!_cart.items) {
-      _cart.items = {}
-    }
-    if (_cart.items[product._id]) {
-      _cart.items[product._id] += 1;
-    } else {
-      _cart.items[product._id] = 1;
-    }
-    if (!_cart.totalItems) {
-      _cart.totalItems = 0;
-    }
-    _cart.totalItems += 1;
-    setCart(_cart);
 
+    AddToCart(cart, setCart, product);
+    
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);

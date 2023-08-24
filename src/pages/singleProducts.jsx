@@ -1,8 +1,13 @@
 import{ useState , useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import AddToCart from '../helpers/AddTocart';
+import { CartContext } from '../CartContext'
+import { useContext } from 'react'
 
 
 const SingleProducts = () => {
+    const { cart, setCart } = useContext(CartContext);
+
     const [product,setProducts] = useState({});
     const params = useParams();
     const navigate = useNavigate();
@@ -29,7 +34,8 @@ const SingleProducts = () => {
                         <div className="font-bold mt-2 ">₹ {product.price}
 
                         </div>
-                        <button className="bg-yellow-500 py-1 px-8 rounded-full font-bold mt-4">Add to cart</button>
+                        <button
+                        onClick={(e) => AddToCart(cart, setCart, product)} className="bg-yellow-500 py-1 px-8 rounded-full font-bold mt-4">Add to cart</button>
 
                     </div>
 

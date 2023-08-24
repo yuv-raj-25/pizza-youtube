@@ -10,7 +10,12 @@ const Navbar = () => {
     padding: "6px 12px",
     borderRadius: "50px",
   };
+  const path = window.location.href;
+  const currpath = window.location.pathname;
 
+
+  
+ 
   const { cart } = useContext(CartContext);
   return (
     <nav className="container flex ml-20  items-center justify-between py-3">
@@ -29,7 +34,7 @@ const Navbar = () => {
         <li className="ml-12">
           <Link to="/cart">
             <div style={cartstyle}>
-              <span>{cart.totalItems}</span>
+              <span>{ cart.totalItems ? cart.totalItems : 0}</span>
               <img className="ml-2" src="/images/cart.png" alt="cart-icon" />
             </div>
           </Link>
